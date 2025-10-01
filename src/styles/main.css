@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #0079bf;
+    color: #172b4d;
+    line-height: 1.4;
+}
+
+.app {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.board {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.columns-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.column {
+    background: #ebecf0;
+    border-radius: 12px;
+    padding: 12px;
+    min-height: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column-header {
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #172b4d;
+    border-bottom: 2px solid #ddd;
+}
+
+.cards-container {
+    min-height: 100px;
+    margin-bottom: 12px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    position: relative;
+    transition: box-shadow 0.2s ease;
+    user-select: none;
+}
+
+.card:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover .card-delete {
+    opacity: 1;
+}
+
+.card-delete {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: #6b778c;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.card-delete:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #c53030;
+}
+
+.card.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+    cursor: grabbing;
+}
+
+.card-placeholder {
+    background: rgba(9, 30, 66, 0.04);
+    border: 2px dashed #091e42;
+    border-radius: 8px;
+    height: 60px;
+    margin-bottom: 8px;
+    opacity: 0.6;
+}
+
+.add-card-form {
+    margin-top: 8px;
+}
+
+.add-card-textarea {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    resize: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    min-height: 60px;
+}
+
+.add-card-textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0079bf;
+}
+
+.add-card-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+    background: #0079bf;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #026aa7;
+}
+
+.btn-secondary {
+    background: #6b778c;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6780;
+}
+
+.add-card-btn {
+    width: 100%;
+    background: rgba(9, 30, 66, 0.04);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #6b778c;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.add-card-btn:hover {
+    background: rgba(9, 30, 66, 0.08);
+    color: #172b4d;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .columns-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .app {
+        padding: 10px;
+    }
+}
