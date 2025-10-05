@@ -6,17 +6,26 @@ module.exports = {
   entry: './src/scripts/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.[contenthash].js',
+    filename: 'bundle.js',
     clean: true,
   },
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
     ],
@@ -24,11 +33,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: 'src/assets', to: 'assets' },
-      ],
     }),
   ],
   devServer: {
